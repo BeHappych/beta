@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Index</title>
+    </head>
+    <body>
+        <h2>Start page</h2>
+        <p><a href="/create">Add</a></p>
+        <table>
+            <thead><th>Id</th><th>Full name</th><th>Birthday</th><th>Address</th><th></th></thead>
+            {{range . }}
+            <tr>
+                <td>{{.Id}}</td>
+                <td>{{.Full_name}}</td>
+                <td>{{.Birthday}}</td>
+                <td>{{.Address}}</td>
+                <td><a href="/edit/{{.Id}}">Изменить</a> |
+                    <a href="/delete/{{.Id}}">Удалить</a>
+                </td>
+            </tr>
+            {{end}}
+        </table>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit Item</title>
+    </head>
+    <body>
+        <h3>Edit Item</h3>
+        <form method="POST">
+            <input type="hidden" name="id" value="{{.Id}}" />
+            <label>Full_name</label><br>
+            <input type="text" name="full_name" value="{{.Full_name}}" /><br><br>
+            <label>Birthday</label><br>
+            <input type="date" name="birthday" value="{{.Birthday}}" /><br><br>
+            <label>Address</label><br>
+            <input type="text" name="address" value="{{.Address}}" /><br><br>
+            <input type="submit" value="Send" />
+        </form>
+    </body>
+</html>
