@@ -7,9 +7,9 @@ import (
 	"log"
 	"net/http"
 
-	//"github.com/gin-gonic/gin"
-	//swaggerFiles "github.com/swaggo/files"     // swagger embed files
-	//ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
+	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"     // swagger embed files
+	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
 
 	//"./docs"
 
@@ -159,18 +159,18 @@ func main() {
 	}
 	database = db
 	defer db.Close()
-	router := mux.NewRouter()
-	router.HandleFunc("/", IndexHandler)
-	router.HandleFunc("/create", CreateHandler)
-	router.HandleFunc("/edit/{id:[0-9]+}", EditPage).Methods("GET")
-	router.HandleFunc("/edit/{id:[0-9]+}", EditHandler).Methods("POST")
-	router.HandleFunc("/delete/{id:[0-9]+}", DeleteHandler)
+	//router := mux.NewRouter()
+	//router.HandleFunc("/", IndexHandler)
+	//router.HandleFunc("/create", CreateHandler)
+	//router.HandleFunc("/edit/{id:[0-9]+}", EditPage).Methods("GET")
+	//router.HandleFunc("/edit/{id:[0-9]+}", EditHandler).Methods("POST")
+	//router.HandleFunc("/delete/{id:[0-9]+}", DeleteHandler)
 
-	http.Handle("/", router)
+	//http.Handle("/", router)
 
-	//r := gin.Default()
-	//r.PUT("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	//r.Run(":8080")
+	r := gin.Default()
+	r.PUT("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.IndexHandler))
+	r.Run(":8080")
 	//r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	fmt.Println("Server is listening...")
