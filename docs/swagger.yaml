@@ -1,0 +1,44 @@
+definitions:
+  main.List:
+    properties:
+      address:
+        type: string
+      birthday:
+        type: string
+      full_name:
+        type: string
+      id:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample server celler server.
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /accounts:
+    get:
+      consumes:
+      - application/json
+      description: get accounts
+      parameters:
+      - description: User ID
+        in: body
+        name: lists
+        required: true
+        schema:
+          $ref: '#/definitions/main.List'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.List'
+            type: array
+      summary: List tables
+      tags:
+      - accounts
+swagger: "2.0"

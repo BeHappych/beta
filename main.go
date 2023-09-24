@@ -101,14 +101,11 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// @Summary      List tables
-// @Description  get accounts
-// @Tags         accounts
-// @Accept       json
-// @Produce      json
-// @Param        lists body List true "User ID"
-// @Success      200  {array}   List
-// @Router       /accounts [get]
+// @Summary Retrieves user based on given ID
+// @Produce json
+// @Param id path integer true "User ID"
+// @Success 200 {object} models.User
+// @Router /users/{id} [get]
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 
 	rows, err := database.Query("select * from Lists")
@@ -144,11 +141,11 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, lists)
 }
 
-// @title           Swagger Example API
-// @version         1.0
-// @description     This is a sample server celler server.
+// @title Blueprint Swagger API
+// @version 1.0
+// @description Swagger API for Golang Project Blueprint.
 
-// @host      localhost:8080
+// @BasePath /api/v1
 
 func main() {
 
@@ -169,10 +166,11 @@ func main() {
 	//http.Handle("/", router)
 
 	r := gin.Default()
-	r.PUT("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.IndexHandler))
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	//r.PUT("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.IndexHandler))
 	r.Run(":8080")
 	//r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	fmt.Println("Server is listening...")
-	http.ListenAndServe(":8181", nil)
+	//fmt.Println("Server is listening...")
+	//http.ListenAndServe(":8181", nil)
 }
