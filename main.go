@@ -11,6 +11,8 @@ import (
 	swaggerFiles "github.com/swaggo/files"     // swagger embed files
 	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
 
+	//_ "github.com/BeHappych/beta/docs"
+
 	//"./docs"
 
 	//_ "github.com/go-sql-driver/mysql"
@@ -168,9 +170,10 @@ func main() {
 	r := gin.Default()
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	//r.PUT("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.IndexHandler))
+	http.ListenAndServe(":8080", nil)
 	r.Run(":8080")
 	//r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	//fmt.Println("Server is listening...")
-	//http.ListenAndServe(":8181", nil)
+
 }
