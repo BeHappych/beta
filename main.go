@@ -168,12 +168,25 @@ func main() {
 	//http.Handle("/", router)
 
 	r := gin.Default()
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	//r.PUT("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.IndexHandler))
-	http.ListenAndServe(":8080", nil)
-	r.Run(":8080")
-	//r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	//v1 := r.Group("/api/v1")
+	{
+		//accounts := v1.Group("/accounts")
+		{
+			//accounts.GET(":id", c.ShowAccount)
+			//accounts.GET("", c.ListAccounts)
+			//accounts.POST("", c.AddAccount)
+			//accounts.DELETE(":id", c.DeleteAccount)
+			//accounts.PATCH(":id", c.UpdateAccount)
+			//accounts.POST(":id/images", c.UploadAccountImage)
+		}
+		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+		//r.PUT("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.IndexHandler))
+		//http.ListenAndServe(":8080", nil)
+		fmt.Println("Server is listening...")
+		r.Run(":8080")
+		//r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	//fmt.Println("Server is listening...")
+		//
 
+	}
 }
