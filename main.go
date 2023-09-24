@@ -11,7 +11,7 @@ import (
 	swaggerFiles "github.com/swaggo/files"     // swagger embed files
 	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
 
-	//_ "github.com/BeHappych/beta/docs"
+	_ "github.com/BeHappych/beta/docs"
 
 	//"./docs"
 
@@ -147,7 +147,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 // @version 1.0
 // @description Swagger API for Golang Project Blueprint.
 
-// @BasePath /api/v1
+//
 
 func main() {
 
